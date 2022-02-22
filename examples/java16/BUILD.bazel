@@ -1,0 +1,15 @@
+java_binary(
+    name = "pattermatchinginstanceof",
+    srcs = glob(["src/main/java/jtpadilla/pattermatchinginstanceof/Example.java"]),
+    main_class = "jtpadilla.pattermatchinginstanceof.Example",
+    deps = [
+    ],
+)
+
+java_binary(
+    name = "records",
+    srcs = glob(["src/main/java/jtpadilla/records/Example.java"]),
+    main_class = "jtpadilla.records.Example",
+    deps = [
+    ],
+)
