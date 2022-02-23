@@ -1,4 +1,4 @@
-package jtpadilla.textblocks;
+package jtpadilla.examples.java15.textblocks;
 
 public class IncidentalWhiteSpace {
 

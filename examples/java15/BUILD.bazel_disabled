@@ -1,0 +1,15 @@
+java_binary(
+    name = "incidentalwhitespace",
+    srcs = glob(["src/main/java/jtpadilla/examples/java15/textblocks"]),
+    main_class = "jtpadilla.examples.java15.textblocks.IncidentalWhiteSpace",
+    deps = [
+    ],
+)
+
+java_binary(
+    name = "newescapesecuences",
+    srcs = glob(["src/main/java/jtpadilla/examples/java15/textblocks"]),
+    main_class = "jtpadilla.examples.java15.textblocks.NewEscapeSequences",
+    deps = [
+    ],
+)

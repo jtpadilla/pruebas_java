@@ -1,4 +1,4 @@
-package jtpadilla.pattermatchinginstanceof;
+package jtpadilla.examples.java16.pattermatchinginstanceof;
 
 public class Example {
 
