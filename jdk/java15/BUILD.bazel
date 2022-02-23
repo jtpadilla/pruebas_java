@@ -1,15 +1,15 @@
 java_binary(
     name = "incidentalwhitespace",
-    srcs = ["src/main/java/jtpadilla/examples/java15/textblocks/IncidentalWhiteSpace.java"],
-    main_class = "jtpadilla.examples.java15.textblocks.IncidentalWhiteSpace",
+    srcs = ["src/main/java/jtpadilla/jdk/java15/textblocks/IncidentalWhiteSpace.java"],
+    main_class = "jtpadilla.jdk.java15.textblocks.IncidentalWhiteSpace",
     deps = [
     ],
 )
 
 java_binary(
     name = "newescapesecuences",
-    srcs = ["src/main/java/jtpadilla/examples/java15/textblocks/NewEscapeSequences.java"],
-    main_class = "jtpadilla.examples.java15.textblocks.NewEscapeSequences",
+    srcs = ["src/main/java/jtpadilla/jdk/java15/textblocks/NewEscapeSequences.java"],
+    main_class = "jtpadilla.jdk.java15.textblocks.NewEscapeSequences",
     deps = [
     ],
 )

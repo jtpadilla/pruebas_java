@@ -1,4 +1,4 @@
-package jtpadilla.examples.java16.records;
+package jtpadilla.jdk.java16.records;
 
 record  MyRecord(int x, int y) {}
 

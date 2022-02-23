@@ -1,4 +1,4 @@
-package jtpadilla.examples.java15.textblocks;
+package jtpadilla.jdk.java15.textblocks;
 
 public class NewEscapeSequences {
 

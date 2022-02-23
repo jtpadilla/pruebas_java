@@ -1,4 +1,4 @@
-package jtpadilla.examples.java14.switchexpressions;
+package jtpadilla.jdk.java14.switchexpressions;
 
 public class Example {
 
