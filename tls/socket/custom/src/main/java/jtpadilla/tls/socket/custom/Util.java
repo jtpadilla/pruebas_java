@@ -8,7 +8,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Util {
-   public static void startClientWorking(final Socket client){
+
+   private byte[] getPrivateKey(String deviceId) throws IOException {
+      String resourceName = deviceId + "_rsa_private_pkcs8";
+      return getClass().getClassLoader().getResourceAsStream(resourceName).readAllBytes();
+   }
+
+   public static void startClientWorking(final Socket client) {
       System.out.println("client start");
       new Thread() {
          public void run() {
