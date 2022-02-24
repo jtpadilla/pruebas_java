@@ -1,7 +1,0 @@
-java_binary(
-    name = "server",
-    srcs = glob(["src/main/java/jtpadilla/tls/socket/properties/server/Server.java"]),
-    main_class = "jtpadilla.tls.socket.properties.server.Server",
-    deps = [
-    ],
-)

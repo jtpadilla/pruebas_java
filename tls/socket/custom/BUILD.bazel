@@ -1,0 +1,5 @@
+java_binary(
+    name = "custom",
+    srcs = glob(["src/main/java/**/*.java"]),
+    main_class = "jtpadilla.tls.socket.custom.AppCustom",
+)
