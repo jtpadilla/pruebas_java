@@ -1,7 +1,0 @@
-java_binary(
-    name = "server",
-    srcs = glob(["src/main/java/jtpadilla/jdk/java16/pattermatchinginstanceof/Example.java"]),
-    main_class = "jtpadilla.jdk.java16.pattermatchinginstanceof.Example",
-    deps = [
-    ],
-)
