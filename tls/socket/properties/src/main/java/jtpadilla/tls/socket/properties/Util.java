@@ -17,8 +17,7 @@ public class Util {
                output.println("Federico");
                output.flush();
                System.out.println("Federico sent");
-               BufferedReader input = new BufferedReader(new InputStreamReader(
-                     client.getInputStream()));
+               BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
                String received = input.readLine();
                System.out.println("Received : " + received);
                client.close();
@@ -38,8 +37,7 @@ public class Util {
                Socket aClient = serverSocket.accept();
                System.out.println("client accepted");
                aClient.setSoLinger(true, 1000);
-               BufferedReader input = new BufferedReader(new InputStreamReader(
-                     aClient.getInputStream()));
+               BufferedReader input = new BufferedReader(new InputStreamReader(aClient.getInputStream()));
                String recibido = input.readLine();
                System.out.println("Recibido " + recibido);
                PrintWriter output = new PrintWriter(aClient.getOutputStream());
