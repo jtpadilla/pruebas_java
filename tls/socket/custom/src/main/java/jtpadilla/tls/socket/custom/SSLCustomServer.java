@@ -29,7 +29,7 @@ public class SSLCustomServer {
       TrustManager[] trustManagers = tmf.getTrustManagers();
       KeyManager[] keyManagers = kmf.getKeyManagers();
 
-      sc.init(keyManagers, trustManagers, SecureRandom.getInstance("SHA1PRNG"));
+      sc.init(keyManagers, trustManagers, new SecureRandom());
       return sc;
 
    }
