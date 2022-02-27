@@ -22,12 +22,21 @@ public class FileEncrypterDecrypterIntegrationTest {
         String originalContent = "foobar";
         SecretKey secretKey = KeyGenerator.getInstance("AES").generateKey();
 
+        // Se crea la utilidad crifradora con la clave secreta e indicando el algoritmo
         FileEncrypterDecrypter fileEncrypterDecrypter = new FileEncrypterDecrypter(secretKey, "AES/CBC/PKCS5Padding");
+
+        // Mediante la utilidad cifradora se genera un fichero al cual se le colocan los datos cifrados
         fileEncrypterDecrypter.encrypt(originalContent, "baz.enc");
 
+        // Mediante la utilidad descifradora so se descifran los datos del fichero.
         String decryptedContent = fileEncrypterDecrypter.decrypt("baz.enc");
+
+        // test
         assertThat(decryptedContent, is(originalContent));
 
-        new File("baz.enc").delete(); // cleanup
+        // Limpieza del fichero
+        //noinspection ResultOfMethodCallIgnored
+        new File("baz.enc").delete();
+
     }
 }
