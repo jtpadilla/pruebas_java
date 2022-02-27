@@ -12,18 +12,16 @@ import javax.security.sasl.RealmCallback;
 public class ClientCallbackHandler implements CallbackHandler {
 
     @Override
-    public void handle(Callback[] cbs) throws IOException, UnsupportedCallbackException {
+    public void handle(Callback[] cbs) {
         for (Callback cb : cbs) {
-            if (cb instanceof NameCallback) {
-                NameCallback nc = (NameCallback) cb;
+            if (cb instanceof NameCallback nc) {
                 nc.setName("username");
-            } else if (cb instanceof PasswordCallback) {
-                PasswordCallback pc = (PasswordCallback) cb;
+            } else if (cb instanceof PasswordCallback pc) {
                 pc.setPassword("password".toCharArray());
-            } else if (cb instanceof RealmCallback) {
-                RealmCallback rc = (RealmCallback) cb;
+            } else if (cb instanceof RealmCallback rc) {
                 rc.setText("myServer");
             }
         }
     }
+
 }

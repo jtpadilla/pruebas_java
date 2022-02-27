@@ -14,21 +14,19 @@ public class ServerCallbackHandler implements CallbackHandler {
 
     @Override
     public void handle(Callback[] cbs) throws IOException, UnsupportedCallbackException {
+
         for (Callback cb : cbs) {
-            if (cb instanceof AuthorizeCallback) {
-                AuthorizeCallback ac = (AuthorizeCallback) cb;
+            if (cb instanceof AuthorizeCallback ac) {
                 ac.setAuthorized(true);
-            } else if (cb instanceof NameCallback) {
-                NameCallback nc = (NameCallback) cb;
+            } else if (cb instanceof NameCallback nc) {
                 nc.setName("username");
 
-            } else if (cb instanceof PasswordCallback) {
-                PasswordCallback pc = (PasswordCallback) cb;
+            } else if (cb instanceof PasswordCallback pc) {
                 pc.setPassword("password".toCharArray());
-            } else if (cb instanceof RealmCallback) {
-                RealmCallback rc = (RealmCallback) cb;
+            } else if (cb instanceof RealmCallback rc) {
                 rc.setText("myServer");
             }
         }
+
     }
 }
