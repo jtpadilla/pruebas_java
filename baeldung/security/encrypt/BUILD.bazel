@@ -1,0 +1,6 @@
+java_library(
+    name = "encrypt",
+    srcs = glob(["src/main/java/**/*.java"]),
+    deps = [
+    ],
+)
