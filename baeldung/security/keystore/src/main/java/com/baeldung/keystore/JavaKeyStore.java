@@ -14,41 +14,39 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.util.Enumeration;
 
-/**
- * Created by adi on 3/7/18.
- */
 public class JavaKeyStore {
+
+    final private String keyStoreName;
+    final private char[] keyStorePassword;
 
     private KeyStore keyStore;
 
-    private String keyStoreName;
     private String keyStoreType;
-    private String keyStorePassword;
 
-    public JavaKeyStore(String keyStoreType, String keyStorePassword, String keyStoreName) throws CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException {
+    public JavaKeyStore(String keyStoreType, String keyStorePassword, String keyStoreName) {
         this.keyStoreName = keyStoreName;
         this.keyStoreType = keyStoreType;
-        this.keyStorePassword = keyStorePassword;
+        this.keyStorePassword = keyStorePassword.toCharArray();
     }
 
     public void createEmptyKeyStore() throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException {
-        if(keyStoreType ==null || keyStoreType.isEmpty()){
+
+        if (keyStoreType == null || keyStoreType.isEmpty()) {
             keyStoreType = KeyStore.getDefaultType();
         }
+
         keyStore = KeyStore.getInstance(keyStoreType);
-        //load
-        char[] pwdArray = keyStorePassword.toCharArray();
-        keyStore.load(null, pwdArray);
+        keyStore.load(null, keyStorePassword);
 
         // Save the keyStore
         FileOutputStream fos = new FileOutputStream(keyStoreName);
-        keyStore.store(fos, pwdArray);
+        keyStore.store(fos, keyStorePassword);
         fos.close();
+
     }
 
-    public void loadKeyStore() throws IOException, KeyStoreException, CertificateException, NoSuchAlgorithmException {
-        char[] pwdArray = keyStorePassword.toCharArray();
-        keyStore.load(new FileInputStream(keyStoreName), pwdArray);
+    public void loadKeyStore() throws IOException, CertificateException, NoSuchAlgorithmException {
+        keyStore.load(new FileInputStream(keyStoreName), keyStorePassword);
     }
 
     public void setEntry(String alias, KeyStore.SecretKeyEntry secretKeyEntry, KeyStore.ProtectionParameter protectionParameter) throws KeyStoreException {
@@ -56,7 +54,7 @@ public class JavaKeyStore {
     }
 
     public KeyStore.Entry getEntry(String alias) throws UnrecoverableEntryException, NoSuchAlgorithmException, KeyStoreException {
-        KeyStore.ProtectionParameter protParam = new KeyStore.PasswordProtection(keyStorePassword.toCharArray());
+        KeyStore.ProtectionParameter protParam = new KeyStore.PasswordProtection(keyStorePassword);
         return keyStore.getEntry(alias, protParam);
     }
 

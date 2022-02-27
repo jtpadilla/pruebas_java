@@ -8,9 +8,9 @@ import java.util.stream.DoubleStream;
 
 public interface SecureRandomDemo {
 
-    public static void generateSecureRandomValues() {
+    static void generateSecureRandomValues() throws NoSuchAlgorithmException {
 
-        SecureRandom sr = new SecureRandom();
+        SecureRandom sr = SecureRandomDemo.getSecureRandomForAlgorithm(null);
 
         int randomInt = sr.nextInt();
         long randomLong = sr.nextLong();
@@ -26,7 +26,7 @@ public interface SecureRandomDemo {
         sr.nextBytes(values);
     }
 
-    public static SecureRandom getSecureRandomForAlgorithm(String algorithm) throws NoSuchAlgorithmException {
+    static SecureRandom getSecureRandomForAlgorithm(String algorithm) throws NoSuchAlgorithmException {
         if (algorithm == null || algorithm.isEmpty()) {
             return new SecureRandom();
         }
