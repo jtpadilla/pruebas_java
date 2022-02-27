@@ -1,1 +1,2 @@
 https://www.baeldung.com/java-ssl-handshake-failures
+https://blog.gypsyengineer.com/en/security/an-example-of-tls-13-client-and-server-on-java.html
