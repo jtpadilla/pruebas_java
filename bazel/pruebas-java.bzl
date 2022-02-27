@@ -9,6 +9,8 @@ def pruebas_java_deps():
         artifacts = [
             "junit:junit:%s" % JUNIT_VERSION,
             "org.json:json:20210307",
+            "org.assertj:assertj-core:3.4.1",
+            "org.hamcrest:hamcrest:2.2",
         ],
         repositories = [
             "https://repo1.maven.org/maven2",
