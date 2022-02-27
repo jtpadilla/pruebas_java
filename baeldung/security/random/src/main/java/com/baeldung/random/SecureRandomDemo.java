@@ -9,6 +9,7 @@ import java.util.stream.DoubleStream;
 public interface SecureRandomDemo {
 
     public static void generateSecureRandomValues() {
+
         SecureRandom sr = new SecureRandom();
 
         int randomInt = sr.nextInt();
