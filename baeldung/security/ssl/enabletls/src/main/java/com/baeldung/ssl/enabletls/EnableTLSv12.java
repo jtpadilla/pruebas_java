@@ -130,6 +130,7 @@ public class EnableTLSv12 {
             }
         }
         logger.info("Created TLSv1.2 connection on HttpsURLConnection");
+
     }
 
 }
