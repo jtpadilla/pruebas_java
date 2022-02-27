@@ -5,12 +5,12 @@ java_library(
     ],
 )
 
-java_test(
-    name = "test",
-    srcs = glob(["src/test/java/**/*.java"]),
-    test_class = "com.baeldung.keystore.test.JavaKeyStoreUnitTest",
-    deps = [
-        ":keystore",
-        "@maven//:junit_junit",
-    ],
-)
+#java_test(
+#    name = "test",
+#    srcs = glob(["src/test/java/**/*.java"]),
+#    test_class = "com.baeldung.keystore.test.JavaKeyStoreUnitTest",
+#    deps = [
+#        ":keystore",
+#        "@maven//:junit_junit",
+#    ],
+#)
