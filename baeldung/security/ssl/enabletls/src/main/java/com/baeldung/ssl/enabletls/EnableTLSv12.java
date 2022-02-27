@@ -74,7 +74,7 @@ public class EnableTLSv12 {
 
     }
 
-    public void enableTLSv12UsingSSLParameters() throws UnknownHostException, IOException {
+    public void enableTLSv12UsingSSLParameters() throws IOException {
 
         SSLSocketFactory socketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         SSLSocket sslSocket = (SSLSocket) socketFactory.createSocket(url.trim(), port);
@@ -102,7 +102,7 @@ public class EnableTLSv12 {
 
     }
 
-    public void enableTLSv12UsingSSLContext() throws NoSuchAlgorithmException, KeyManagementException, UnknownHostException, IOException {
+    public void enableTLSv12UsingSSLContext() throws NoSuchAlgorithmException, KeyManagementException, IOException {
 
         SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
         sslContext.init(null, null, new SecureRandom());
