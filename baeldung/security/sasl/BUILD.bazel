@@ -1,0 +1,16 @@
+java_library(
+    name = "sasl",
+    srcs = glob(["src/main/java/**/*.java"]),
+    deps = [
+    ],
+)
+
+java_test(
+    name = "test",
+    srcs = glob(["src/test/java/**/*.java"]),
+    test_class = "com.baeldung.sasl.test.SaslUnitTest",
+    deps = [
+        ":sasl",
+        "@maven//:junit_junit",
+    ],
+)

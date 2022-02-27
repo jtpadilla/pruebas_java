@@ -1,7 +1,7 @@
-package com.baeldung.sasl;
+package com.baeldung.sasl.test;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -12,6 +12,8 @@ import javax.security.sasl.SaslClient;
 import javax.security.sasl.SaslException;
 import javax.security.sasl.SaslServer;
 
+import com.baeldung.sasl.ClientCallbackHandler;
+import com.baeldung.sasl.ServerCallbackHandler;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
