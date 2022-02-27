@@ -52,8 +52,12 @@ public class EnableTLSv12 {
     }
 
     private void handleCommunication(SSLSocket socket, String usedTLSProcess) throws IOException {
+
         logger.info("Enabled TLS v1.2 on " + usedTLSProcess);
-        try (PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))); BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+
+        try (   PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+
             out.println("GET / HTTP/1.0");
             out.println();
             out.flush();
@@ -65,7 +69,9 @@ public class EnableTLSv12 {
             String inputLine;
             while ((inputLine = in.readLine()) != null)
                 logger.info(inputLine);
+
         }
+
     }
 
     public void enableTLSv12UsingSSLParameters() throws UnknownHostException, IOException {
