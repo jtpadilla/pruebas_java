@@ -25,7 +25,7 @@ public class JavaKeyStore {
     private String keyStoreType;
     private String keyStorePassword;
 
-    JavaKeyStore(String keyStoreType, String keyStorePassword, String keyStoreName) throws CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException {
+    public JavaKeyStore(String keyStoreType, String keyStorePassword, String keyStoreName) throws CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException {
         this.keyStoreName = keyStoreName;
         this.keyStoreType = keyStoreType;
         this.keyStorePassword = keyStorePassword;
