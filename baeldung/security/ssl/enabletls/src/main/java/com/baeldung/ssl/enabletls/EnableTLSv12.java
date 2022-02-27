@@ -11,6 +11,7 @@ import java.net.UnknownHostException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -23,33 +24,31 @@ public class EnableTLSv12 {
 
     Logger logger = Logger.getLogger(EnableTLSv12.class.getName());
 
-    public String url = "";
-    public Integer port = null;
-
-    public EnableTLSv12() {
-    }
-
     public static void main(String[] args) throws IOException, KeyManagementException, NoSuchAlgorithmException {
-        EnableTLSv12 enableTLSv12 = new EnableTLSv12();
+
         if (args.length != 2) {
             System.out.println("Provide the server url and the secure port:");
             System.exit(-1);
         }
-        enableTLSv12.setHost(args);
-        enableTLSv12.setPort(args);
-        enableTLSv12.enableTLSv12UsingHttpConnection();
-        enableTLSv12.enableTLSv12UsingProtocol();
+
+        EnableTLSv12 enableTLSv12 = new EnableTLSv12(
+                args[0],
+                Integer.parseInt(Objects.requireNonNull(args[1]))
+        );
+
+//        enableTLSv12.enableTLSv12UsingHttpConnection();
+//        enableTLSv12.enableTLSv12UsingProtocol();
         enableTLSv12.enableTLSv12UsingSSLContext();
-        enableTLSv12.enableTLSv12UsingSSLParameters();
+//        enableTLSv12.enableTLSv12UsingSSLParameters();
+
     }
 
-    private void setPort(String[] args) {
-        url = args[0];
-    }
+    final private String url;
+    final private int port;
 
-    private void setHost(String[] args) {
-        String portNumber = args[1];
-        port = Integer.parseInt(portNumber);
+    public EnableTLSv12(String url, int port) {
+        this.url = Objects.requireNonNull(url);
+        this.port = port;
     }
 
     private void handleCommunication(SSLSocket socket, String usedTLSProcess) throws IOException {
