@@ -1,31 +1,34 @@
 package com.baeldung.ssl.example.client;
 
+import javax.net.SocketFactory;
+import javax.net.ssl.SSLParameters;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.Socket;
-
-import javax.net.SocketFactory;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.SSLParameters;
 
 public class SimpleClient {
+
+    static final String[] ENABLED_CLIPHER_SUITS = new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256" };
+    static final String[] ENABLED_PROTOCOLS = new String[] { "TLSv1.2" };
 
     static String startClient(String host, int port) throws IOException {
 
         SocketFactory factory = SSLSocketFactory.getDefault();
 
-        try (Socket connection = factory.createSocket(host, port)) {
-            ((SSLSocket) connection).setEnabledCipherSuites(
-              new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
-            ((SSLSocket) connection).setEnabledProtocols(
-              new String[] { "TLSv1.2"});
+        try (SSLSocket connection = (SSLSocket) factory.createSocket(host, port)) {
+
+            connection.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
+            connection.setEnabledProtocols(ENABLED_PROTOCOLS);
+
             SSLParameters sslParams = new SSLParameters();
             sslParams.setEndpointIdentificationAlgorithm("HTTPS");
-            ((SSLSocket) connection).setSSLParameters(sslParams);
+            connection.setSSLParameters(sslParams);
+
             BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             return input.readLine();
+
         }
 
     }
