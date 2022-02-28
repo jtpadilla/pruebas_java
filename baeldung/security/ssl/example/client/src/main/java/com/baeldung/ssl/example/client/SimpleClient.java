@@ -34,6 +34,8 @@ public class SimpleClient {
     }
 
     public static void main(String[] args) throws IOException {
+        String currentPath = new java.io.File(".").getCanonicalPath();
+        System.out.println("Current dir:" + currentPath);
         System.out.println(startClient("localhost", 8443));
     }
 
