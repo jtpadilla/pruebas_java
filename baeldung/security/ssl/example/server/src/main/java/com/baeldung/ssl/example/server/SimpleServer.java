@@ -1,12 +1,11 @@
 package com.baeldung.ssl.example.server;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Socket;
-
 import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 public class SimpleServer {
 

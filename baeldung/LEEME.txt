@@ -1,2 +1,10 @@
 https://www.baeldung.com/java-ssl-handshake-failures
+https://docs.oracle.com/en/java/javase/17/security/java-secure-socket-extension-jsse-reference-guide.html
+
 https://blog.gypsyengineer.com/en/security/an-example-of-tls-13-client-and-server-on-java.html
+https://mkyong.com/java/java-sslsocket-tls-1-3-example/
+https://code2care.org/java/java-tlsv1_3-code-example-using-ssl-socket-protocol
+https://crunchify.com/java-sslsocket-with-tls1-3-and-tls_aes_128_gcm_sha256-cipher-example/
+https://gist.github.com/artem-smotrakov/bd14e4bde4d7238f7e5ab12c697a86a3
+
+https://stackoverflow.com/questions/6353849/received-fatal-alert-handshake-failure-through-sslhandshakeexception
