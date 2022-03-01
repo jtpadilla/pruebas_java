@@ -1,0 +1,8 @@
+java_binary(
+    name = "code2care",
+    srcs = glob(["src/main/java/**/*.java"]),
+    jvm_flags = [
+        "'-Djavax.net.debug=ssl'",
+    ],
+    main_class = "code2care.TSLv1_3Example",
+)
