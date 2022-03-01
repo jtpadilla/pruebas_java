@@ -1,5 +1,8 @@
 java_binary(
     name = "googleget",
     srcs = glob(["src/main/java/**/*.java"]),
+    jvm_flags = [
+        "'-Djavax.net.debug=ssl'",
+    ],
     main_class = "com.mkyong.java11.jep332.JavaTLS13",
 )

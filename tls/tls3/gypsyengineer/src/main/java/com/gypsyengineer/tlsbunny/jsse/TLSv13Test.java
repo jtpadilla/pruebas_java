@@ -32,8 +32,12 @@ import java.io.*;
 public class TLSv13Test {
 
     private static final int delay = 1000; // in millis
-    private static final String[] protocols = new String[] {"TLSv1.3"};
-    private static final String[] cipher_suites = new String[] {"TLS_AES_128_GCM_SHA256"};
+    private static final String[] protocols = new String[] {
+            "TLSv1.3"
+    };
+    private static final String[] cipher_suites = new String[] {
+            "TLS_AES_128_GCM_SHA256"
+    };
     private static final String message = "Like most of life's problems, this one can be solved with bending!";
 
     public static void main(String[] args) throws Exception {

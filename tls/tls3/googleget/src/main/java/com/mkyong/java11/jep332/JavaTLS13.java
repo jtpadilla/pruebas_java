@@ -4,16 +4,23 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 
-// Java 11
 public class JavaTLS13 {
 
-    private static final String[] protocols = new String[] {
+    private static final String[] ENABLED_PROTOCOLS = new String[] {
             "TLSv1.3"
     };
 
-    private static final String[] cipher_suites = new String[] {
+    private static final String[] ENABLED_CLIPHER_SUITS = new String[] {
             "TLS_AES_128_GCM_SHA256"
     };
+
+//    static final String[] ENABLED_PROTOCOLS = new String[] {
+//            "TLSv1.2"
+//    };
+//
+//    static final String[] ENABLED_CLIPHER_SUITS = new String[] {
+//            "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"
+//    };
 
     public static void main(String[] args) throws Exception {
 
@@ -26,8 +33,8 @@ public class JavaTLS13 {
             SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
             socket = (SSLSocket) factory.createSocket("google.com", 443);
 
-            socket.setEnabledProtocols(protocols);
-            socket.setEnabledCipherSuites(cipher_suites);
+            socket.setEnabledProtocols(ENABLED_PROTOCOLS);
+            socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
 
             socket.startHandshake();
 

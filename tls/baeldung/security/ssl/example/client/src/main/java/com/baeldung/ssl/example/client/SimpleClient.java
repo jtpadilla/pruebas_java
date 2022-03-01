@@ -10,8 +10,13 @@ import java.io.InputStreamReader;
 
 public class SimpleClient {
 
-    static final String[] ENABLED_CLIPHER_SUITS = new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256" };
-    static final String[] ENABLED_PROTOCOLS = new String[] { "TLSv1.2" };
+    static final String[] ENABLED_PROTOCOLS = new String[] {
+            "TLSv1.2"
+    };
+
+    static final String[] ENABLED_CLIPHER_SUITS = new String[] {
+            "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"
+    };
 
     static String startClient(String host, int port) throws IOException {
 
