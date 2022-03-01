@@ -1,5 +1,5 @@
 java_binary(
-    name = "tls3",
+    name = "gypsyengineer",
     srcs = glob(["src/main/java/**/*.java"]),
     main_class = "com.gypsyengineer.tlsbunny.jsse.TLSv13Test",
 )
