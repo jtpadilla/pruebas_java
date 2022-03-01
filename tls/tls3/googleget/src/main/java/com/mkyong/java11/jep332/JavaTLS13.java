@@ -7,8 +7,13 @@ import java.io.*;
 // Java 11
 public class JavaTLS13 {
 
-    private static final String[] protocols = new String[]{"TLSv1.3"};
-    private static final String[] cipher_suites = new String[]{"TLS_AES_128_GCM_SHA256"};
+    private static final String[] protocols = new String[] {
+            "TLSv1.3"
+    };
+
+    private static final String[] cipher_suites = new String[] {
+            "TLS_AES_128_GCM_SHA256"
+    };
 
     public static void main(String[] args) throws Exception {
 
@@ -17,20 +22,16 @@ public class JavaTLS13 {
         BufferedReader in = null;
 
         try {
-            SSLSocketFactory factory =
-                    (SSLSocketFactory) SSLSocketFactory.getDefault();
-            socket =
-                    (SSLSocket) factory.createSocket("google.com", 443);
+
+            SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+            socket = (SSLSocket) factory.createSocket("google.com", 443);
 
             socket.setEnabledProtocols(protocols);
             socket.setEnabledCipherSuites(cipher_suites);
 
             socket.startHandshake();
 
-            out = new PrintWriter(
-                    new BufferedWriter(
-                            new OutputStreamWriter(
-                                    socket.getOutputStream())));
+            out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
 
             out.println("GET / HTTP/1.0");
             out.println();
@@ -40,9 +41,7 @@ public class JavaTLS13 {
                 System.out.println("SSLSocketClient:  java.io.PrintWriter error");
 
             /* read response */
-            in = new BufferedReader(
-                    new InputStreamReader(
-                            socket.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             String inputLine;
             while ((inputLine = in.readLine()) != null)
@@ -50,6 +49,7 @@ public class JavaTLS13 {
 
         } catch (Exception e) {
             e.printStackTrace();
+
         } finally {
             if (socket != null)
                 socket.close();
@@ -58,6 +58,7 @@ public class JavaTLS13 {
             if (in != null)
                 in.close();
         }
+
     }
 
 }
