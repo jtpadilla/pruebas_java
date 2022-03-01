@@ -31,13 +31,16 @@ import java.io.*;
  */
 public class TLSv13Test {
 
-    private static final int delay = 1000; // in millis
-    private static final String[] protocols = new String[] {
+    private static final int DELAY = 1000; // in millis
+
+    private static final String[] ENABLED_PROTOCOLS = new String[] {
             "TLSv1.3"
     };
-    private static final String[] cipher_suites = new String[] {
+
+    private static final String[] ENABLED_CLIPHER_SUITS = new String[] {
             "TLS_AES_128_GCM_SHA256"
     };
+
     private static final String message = "Like most of life's problems, this one can be solved with bending!";
 
     public static void main(String[] args) throws Exception {
@@ -45,7 +48,7 @@ public class TLSv13Test {
         try (EchoServer server = EchoServer.create()) {
 
             new Thread(server).start();
-            Thread.sleep(delay);
+            Thread.sleep(DELAY);
 
             try (SSLSocket socket = createSocket("localhost", server.port())) {
                 InputStream is = new BufferedInputStream(socket.getInputStream());
@@ -67,8 +70,8 @@ public class TLSv13Test {
     public static SSLSocket createSocket(String host, int port) throws IOException {
         SSLSocket socket = (SSLSocket) SSLSocketFactory.getDefault()
                 .createSocket(host, port);
-        socket.setEnabledProtocols(protocols);
-        socket.setEnabledCipherSuites(cipher_suites);
+        socket.setEnabledProtocols(ENABLED_PROTOCOLS);
+        socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
         return socket;
     }
 
@@ -123,8 +126,8 @@ public class TLSv13Test {
 
         public static EchoServer create(int port) throws IOException {
             SSLServerSocket socket = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(port);
-            socket.setEnabledProtocols(protocols);
-            socket.setEnabledCipherSuites(cipher_suites);
+            socket.setEnabledProtocols(ENABLED_PROTOCOLS);
+            socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
             return new EchoServer(socket);
         }
 

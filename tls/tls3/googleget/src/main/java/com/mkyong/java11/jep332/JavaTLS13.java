@@ -14,14 +14,6 @@ public class JavaTLS13 {
             "TLS_AES_128_GCM_SHA256"
     };
 
-//    static final String[] ENABLED_PROTOCOLS = new String[] {
-//            "TLSv1.2"
-//    };
-//
-//    static final String[] ENABLED_CLIPHER_SUITS = new String[] {
-//            "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"
-//    };
-
     public static void main(String[] args) throws Exception {
 
         SSLSocket socket = null;
