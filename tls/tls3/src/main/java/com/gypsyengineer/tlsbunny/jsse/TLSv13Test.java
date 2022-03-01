@@ -37,7 +37,9 @@ public class TLSv13Test {
     private static final String message = "Like most of life's problems, this one can be solved with bending!";
 
     public static void main(String[] args) throws Exception {
+
         try (EchoServer server = EchoServer.create()) {
+
             new Thread(server).start();
             Thread.sleep(delay);
 
@@ -51,10 +53,11 @@ public class TLSv13Test {
                 if (len <= 0) {
                     throw new IOException("no data received");
                 }
-                System.out.printf("client received %d bytes: %s%n",
-                        len, new String(data, 0, len));
+                System.out.printf("client received %d bytes: %s%n", len, new String(data, 0, len));
             }
+
         }
+
     }
 
     public static SSLSocket createSocket(String host, int port) throws IOException {
