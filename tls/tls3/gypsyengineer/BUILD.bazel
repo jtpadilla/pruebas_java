@@ -1,5 +1,12 @@
 java_binary(
     name = "gypsyengineer",
     srcs = glob(["src/main/java/**/*.java"]),
+    jvm_flags = [
+        "'-Djavax.net.debug=ssl'",
+        "'-Djavax.net.ssl.keyStore=keystore'",
+        "'-Djavax.net.ssl.keyStorePassword=passphrase'",
+        "'-Djavax.net.ssl.trustStore=keystore'",
+        "'-Djavax.net.ssl.trustStorePassword=passphrase'",
+    ],
     main_class = "com.gypsyengineer.tlsbunny.jsse.TLSv13Test",
 )

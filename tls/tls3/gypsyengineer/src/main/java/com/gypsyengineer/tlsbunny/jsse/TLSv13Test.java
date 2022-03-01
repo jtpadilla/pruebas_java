@@ -1,5 +1,6 @@
 package com.gypsyengineer.tlsbunny.jsse;
 
+import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
@@ -125,7 +126,8 @@ public class TLSv13Test {
         }
 
         public static EchoServer create(int port) throws IOException {
-            SSLServerSocket socket = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(port);
+            ServerSocketFactory serverSocketFactory = SSLServerSocketFactory.getDefault();
+            SSLServerSocket socket = (SSLServerSocket) serverSocketFactory.createServerSocket(port);
             socket.setEnabledProtocols(ENABLED_PROTOCOLS);
             socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
             return new EchoServer(socket);
