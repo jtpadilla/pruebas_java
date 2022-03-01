@@ -69,8 +69,7 @@ public class TLSv13Test {
     }
 
     public static SSLSocket createSocket(String host, int port) throws IOException {
-        SSLSocket socket = (SSLSocket) SSLSocketFactory.getDefault()
-                .createSocket(host, port);
+        SSLSocket socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket(host, port);
         socket.setEnabledProtocols(ENABLED_PROTOCOLS);
         socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
         return socket;
