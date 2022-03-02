@@ -29,17 +29,22 @@ public class ServerListener {
         return sslServerSocket;
     }
 
-    static public void runListenerForever() throws IOException {
+    static public void runListenerForever()  {
 
-        LOGGER.info(String.format("Se inicia el servidor en el puerto %d%n", PORT));
-        SSLServerSocket sslServerSocket = buildServerSocket();
+        try {
+            LOGGER.info(String.format("Se inicia el servidor en el puerto %d%n", PORT));
+            SSLServerSocket sslServerSocket = buildServerSocket();
 
-        while (true) {
-            try (SSLSocket socket = (SSLSocket) sslServerSocket.accept()) {
-                new Thread(new ServerSession(socket)).start();
-            } catch (Exception e) {
-                System.out.printf("exception: %s%n", e.getMessage());
+            while (true) {
+                try (SSLSocket socket = (SSLSocket) sslServerSocket.accept()) {
+                    new Thread(new ServerSession(socket)).start();
+                } catch (Exception e) {
+                    System.out.printf("exception: %s%n", e.getMessage());
+                }
             }
+
+        } catch (IOException ioEx) {
+            throw new IllegalStateException(ioEx);
         }
 
     }
