@@ -17,7 +17,8 @@ public class TLSv13Client {
         try (ClientSession clientSession = new ClientSession(SERVER, PORT)) {
             clientSession.writeLine(message);
             Optional<String> responde = clientSession.readLine();
-            System.out.println(responde.isPresent() ? "OK" : "Error");
+            boolean ok = responde.isPresent() && responde.get().equals(message);
+            System.out.println(ok  ? "OK" : "Error");
         }
     }
 
