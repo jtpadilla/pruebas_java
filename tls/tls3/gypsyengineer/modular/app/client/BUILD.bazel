@@ -1,0 +1,8 @@
+java_binary(
+    name = "client",
+    srcs = glob(["src/main/java/**/*.java"]),
+    main_class = "com.gypsyengineer.tlsbunny.jsse.app.client.TLSv13Client",
+    deps = [
+        "//tls/tls3/gypsyengineer/modular/lib/client",
+    ],
+)
