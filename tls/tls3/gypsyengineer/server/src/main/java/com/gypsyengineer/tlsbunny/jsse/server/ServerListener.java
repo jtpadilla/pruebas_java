@@ -36,7 +36,7 @@ public class ServerListener {
 
         while (true) {
             try (SSLSocket socket = (SSLSocket) sslServerSocket.accept()) {
-                new Thread(new ServerConnection(socket)).start();
+                new Thread(new ServerSession(socket)).start();
             } catch (Exception e) {
                 System.out.printf("exception: %s%n", e.getMessage());
             }

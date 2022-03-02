@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServerConnection implements Runnable {
+public class ServerSession implements Runnable {
 
     static private AtomicInteger sessionCounter = new AtomicInteger(0);
 
@@ -17,7 +17,7 @@ public class ServerConnection implements Runnable {
     final private InputStream is;
     final private OutputStream os;
 
-    public ServerConnection(SSLSocket socket) throws IOException {
+    public ServerSession(SSLSocket socket) throws IOException {
         logger = Logger.getLogger(String.format("server.%d", sessionCounter.getAndIncrement()));
         this.socket = socket;
         this.is = new BufferedInputStream(socket.getInputStream());
