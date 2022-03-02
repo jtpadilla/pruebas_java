@@ -1,9 +1,8 @@
 package jtpadilla.tls.socket.properties;
 
+import javax.net.ssl.SSLServerSocketFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
-
-import javax.net.ssl.SSLServerSocketFactory;
 
 public class SSLDefaultServerSocket {
 

@@ -1,10 +1,9 @@
 package com.baeldung.ssl.secureconnection;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class SecureConnection {
     
