@@ -8,5 +8,5 @@ java_binary(
         "'-Djavax.net.ssl.trustStore=/tmp/gypsyengineer.ks/truststore'",
         "'-Djavax.net.ssl.trustStorePassword=passphrase'",
     ],
-    main_class = "com.gypsyengineer.tlsbunny.jsse.client.TSLv13Client",
+    main_class = "com.gypsyengineer.tlsbunny.jsse.client.TLSv13Client",
 )
