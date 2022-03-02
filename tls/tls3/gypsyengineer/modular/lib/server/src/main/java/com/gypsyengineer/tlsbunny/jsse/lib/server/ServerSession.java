@@ -40,21 +40,24 @@ public class ServerSession implements Runnable {
         os.flush();
     }
 
+    private void echo() throws IOException {
+        Optional<String> line = readLine();
+        if (line.isPresent()) {
+            logger.info(String.format("Rx: %s%n", line.get()));
+            writeLine(line.get());
+        } else {
+            throw new IOException("No se han recibido datos!");
+        }
+    }
+
     @Override
     public void run() {
 
         logger.info("accepted");
 
         try {
-            while(true) {
-                Optional<String> line = readLine();
-                if (line.isPresent()) {
-                    logger.info(String.format("Rx: %s%n", line.get()));
-                    writeLine(line.get());
-                } else {
-                    throw new IOException("No se han recibido datos!");
-                }
-            }
+            echo();
+            //while(true) echo();
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error durante el procesado de la conexion", e);

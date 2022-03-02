@@ -1,4 +1,4 @@
-package com.gypsyengineer.tlsbunny.jsse;
+package com.gypsyengineer.tlsbunny.jsse.server;
 
 import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLServerSocket;
@@ -7,30 +7,7 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 
-/*
- * Don't forget to set the following system properties when you run the class:
- *
- *     javax.net.ssl.keyStore
- *     javax.net.ssl.keyStorePassword
- *     javax.net.ssl.trustStore
- *     javax.net.ssl.trustStorePassword
- *
- * More details can be found in JSSE docs.
- *
- * For example:
- *
- *     java -cp classes \
- *         -Djavax.net.ssl.keyStore=keystore \
- *         -Djavax.net.ssl.keyStorePassword=passphrase \
- *         -Djavax.net.ssl.trustStore=keystore \
- *         -Djavax.net.ssl.trustStorePassword=passphrase \
- *             com.gypsyengineer.tlsbunny.jsse.TLSv13Test
- *
- * For testing purposes, you can download the keystore file from
- *
- *     https://github.com/openjdk/jdk/tree/master/test/jdk/javax/net/ssl/etc
- */
-public class TLSv13Test {
+public class TLSv13TestServer {
 
     private static final int DELAY = 1000; // in millis
 
@@ -42,37 +19,12 @@ public class TLSv13Test {
             "TLS_AES_128_GCM_SHA256"
     };
 
-    private static final String message = "Like most of life's problems, this one can be solved with bending!";
-
     public static void main(String[] args) throws Exception {
 
         try (EchoServer server = EchoServer.create()) {
-
-            new Thread(server).start();
-            Thread.sleep(DELAY);
-
-            try (SSLSocket socket = createSocket("localhost", server.port())) {
-                InputStream is = new BufferedInputStream(socket.getInputStream());
-                OutputStream os = new BufferedOutputStream(socket.getOutputStream());
-                os.write(message.getBytes());
-                os.flush();
-                byte[] data = new byte[2048];
-                int len = is.read(data);
-                if (len <= 0) {
-                    throw new IOException("no data received");
-                }
-                System.out.printf("client received %d bytes: %s%n", len, new String(data, 0, len));
-            }
-
+            server.run();
         }
 
-    }
-
-    public static SSLSocket createSocket(String host, int port) throws IOException {
-        SSLSocket socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket(host, port);
-        socket.setEnabledProtocols(ENABLED_PROTOCOLS);
-        socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
-        return socket;
     }
 
     public static class EchoServer implements Runnable, AutoCloseable {

@@ -23,6 +23,7 @@ public class ClientSession implements AutoCloseable {
         socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket(host, port);
         socket.setEnabledProtocols(ENABLED_PROTOCOLS);
         socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
+        socket.startHandshake();
         is = new BufferedInputStream(socket.getInputStream());
         os = new BufferedOutputStream(socket.getOutputStream());
     }
