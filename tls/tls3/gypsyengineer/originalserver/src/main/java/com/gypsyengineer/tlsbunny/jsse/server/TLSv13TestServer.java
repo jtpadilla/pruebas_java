@@ -29,7 +29,7 @@ public class TLSv13TestServer {
 
     public static class EchoServer implements Runnable, AutoCloseable {
 
-        private static final int FREE_PORT = 0;
+        private static final int FREE_PORT = 4443;
 
         private final SSLServerSocket sslServerSocket;
 

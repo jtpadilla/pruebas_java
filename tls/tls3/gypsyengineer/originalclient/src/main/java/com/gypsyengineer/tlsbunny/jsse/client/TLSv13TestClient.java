@@ -23,7 +23,7 @@ public class TLSv13TestClient {
 
     public static void main(String[] args) throws Exception {
 
-        try (SSLSocket socket = createSocket("localhost", 39501)) {
+        try (SSLSocket socket = createSocket("localhost", 4443)) {
             InputStream is = new BufferedInputStream(socket.getInputStream());
             OutputStream os = new BufferedOutputStream(socket.getOutputStream());
             os.write(message.getBytes());
