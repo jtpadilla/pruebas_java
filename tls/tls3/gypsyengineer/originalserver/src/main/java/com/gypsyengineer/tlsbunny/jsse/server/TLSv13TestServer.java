@@ -61,7 +61,7 @@ public class TLSv13TestServer {
                 if (len <= 0) {
                     throw new IOException("no data received");
                 }
-                System.out.printf("\"======[CLIENTE]> Ha recibido %d bytes: %s%n", len, new String(data, 0, len));
+                System.out.printf("\"======[SERVIDOR]> Ha recibido %d bytes: %s%n", len, new String(data, 0, len));
                 os.write(data, 0, len);
                 os.flush();
             } catch (Exception e) {
