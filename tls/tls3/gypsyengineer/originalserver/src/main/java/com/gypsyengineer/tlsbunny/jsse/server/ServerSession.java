@@ -20,15 +20,17 @@ public class ServerSession implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("SESSION: Se inicia una nueva sesion.");
-            Optional<String> message = readMessage();
-            if (message.isEmpty()) {
+            System.out.println("SERVER-SESSION: Se inicia una nueva sesion.");
+            Optional<String> messageOptional = readMessage();
+            if (messageOptional.isEmpty()) {
                 throw new IOException("No se han recibido datos");
             } else {
-                writeMessage(message.get());
+                String message = messageOptional.get();
+                writeMessage(message);
+                System.out.printf("SERVER-SESSION-> Ha recibido %d bytes: %s%n", message.length(), message);
             }
         } catch (Exception e) {
-            System.out.printf("SESSION: Se ha producido un error -> %s%n", e.getMessage());
+            System.out.printf("SERVER-SESSION: Se ha producido un error -> %s%n", e.getMessage());
         } finally {
             try {
                 socket.close();

@@ -25,7 +25,7 @@ public class ServerListener implements AutoCloseable, Runnable {
         sslServerSocket = (SSLServerSocket) serverSocketFactory.createServerSocket(PORT);
         sslServerSocket.setEnabledProtocols(ENABLED_PROTOCOLS);
         sslServerSocket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
-        System.out.printf("LISTENER: Se ha iniciado el servidor en el puerto %d%n", PORT);
+        System.out.printf("SERVER-LISTENER: Se ha iniciado el servidor en el puerto %d%n", PORT);
     }
 
     @Override
@@ -46,9 +46,9 @@ public class ServerListener implements AutoCloseable, Runnable {
             serverSession.run();
             //new Thread(new Session(socket)).start();
         } catch (Exception e) {
-            System.out.printf("LISTENER Exception: %s%n", e.getMessage());
+            System.out.printf("SERVER-LISTENER Exception: %s%n", e.getMessage());
         }
-        System.out.println("LISTENER Se detiene el servidor.");
+        System.out.println("SERVER-LISTENER Se detiene el servidor.");
     }
 
 }
