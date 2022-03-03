@@ -5,13 +5,13 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
-public class Session implements Runnable {
+public class ServerSession implements Runnable {
 
     final private SSLSocket socket;
     final private InputStream is;
     final private OutputStream os;
 
-    public Session(SSLSocket socket) throws IOException {
+    public ServerSession(SSLSocket socket) throws IOException {
         this.socket = socket;
         is = new BufferedInputStream(socket.getInputStream());
         os = new BufferedOutputStream(socket.getOutputStream());

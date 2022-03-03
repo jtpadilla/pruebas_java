@@ -6,7 +6,7 @@ import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.*;
 
-public class Listener implements AutoCloseable, Runnable {
+public class ServerListener implements AutoCloseable, Runnable {
 
     private static final int PORT = 4443;
 
@@ -20,7 +20,7 @@ public class Listener implements AutoCloseable, Runnable {
 
     private final SSLServerSocket sslServerSocket;
 
-    public Listener() throws IOException {
+    public ServerListener() throws IOException {
         ServerSocketFactory serverSocketFactory = SSLServerSocketFactory.getDefault();
         sslServerSocket = (SSLServerSocket) serverSocketFactory.createServerSocket(PORT);
         sslServerSocket.setEnabledProtocols(ENABLED_PROTOCOLS);
@@ -42,8 +42,8 @@ public class Listener implements AutoCloseable, Runnable {
 
     public void nextAccept() {
         try (SSLSocket socket = (SSLSocket) sslServerSocket.accept()) {
-            Session session = new Session(socket);
-            session.run();
+            ServerSession serverSession = new ServerSession(socket);
+            serverSession.run();
             //new Thread(new Session(socket)).start();
         } catch (Exception e) {
             System.out.printf("LISTENER Exception: %s%n", e.getMessage());

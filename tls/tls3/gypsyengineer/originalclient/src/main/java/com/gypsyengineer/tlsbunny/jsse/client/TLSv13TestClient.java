@@ -1,15 +1,10 @@
 package com.gypsyengineer.tlsbunny.jsse.client;
 
-import javax.net.ServerSocketFactory;
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 
 public class TLSv13TestClient {
-
-    private static final int DELAY = 1000; // in millis
 
     private static final String[] ENABLED_PROTOCOLS = new String[] {
             "TLSv1.3"
