@@ -59,9 +59,12 @@ public class TLSv13Test {
                 byte[] data = new byte[2048];
                 int len = is.read(data);
                 if (len <= 0) {
-                    throw new IOException("no data received");
+                    throw new IOException("No se han recibido datos!");
                 }
-                System.out.printf("client received %d bytes: %s%n", len, new String(data, 0, len));
+                System.out.printf("======[CLIENTE]> Ha recibido %d bytes: %s%n", len, new String(data, 0, len));
+            } catch (Throwable t) {
+                System.out.println("Se ha producido une excepcion en el cliente.");
+                t.printStackTrace();
             }
 
         }
@@ -109,7 +112,7 @@ public class TLSv13Test {
                 if (len <= 0) {
                     throw new IOException("no data received");
                 }
-                System.out.printf("server received %d bytes: %s%n", len, new String(data, 0, len));
+                System.out.printf("======[SERVIDOR]> Ha recibido %d bytes: %s%n", len, new String(data, 0, len));
                 os.write(data, 0, len);
                 os.flush();
             } catch (Exception e) {
