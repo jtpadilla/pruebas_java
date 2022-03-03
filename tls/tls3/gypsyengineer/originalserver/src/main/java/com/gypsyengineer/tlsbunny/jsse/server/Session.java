@@ -19,7 +19,6 @@ public class Session implements Runnable {
 
     @Override
     public void run() {
-
         try {
             System.out.println("SESSION: Se inicia una nueva sesion.");
             Optional<String> message = readMessage();
@@ -30,8 +29,12 @@ public class Session implements Runnable {
             }
         } catch (Exception e) {
             System.out.printf("SESSION: Se ha producido un error -> %s%n", e.getMessage());
+        } finally {
+            try {
+                socket.close();
+            } catch (IOException e) {
+            }
         }
-
     }
 
     private Optional<String> readMessage() throws IOException {
