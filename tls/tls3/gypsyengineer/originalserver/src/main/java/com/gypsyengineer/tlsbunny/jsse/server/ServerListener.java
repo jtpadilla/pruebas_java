@@ -46,9 +46,9 @@ public class ServerListener implements AutoCloseable, Runnable {
             serverSession.run();
             //new Thread(new Session(socket)).start();
         } catch (Exception e) {
-            System.out.printf("SERVER-LISTENER Exception: %s%n", e.getMessage());
+            System.out.printf("SERVER-LISTENER: Exception=%s%n", e.getMessage());
         }
-        System.out.println("SERVER-LISTENER Se detiene el servidor.");
+        System.out.println("SERVER-LISTENER: Se detiene el servidor.");
     }
 
 }

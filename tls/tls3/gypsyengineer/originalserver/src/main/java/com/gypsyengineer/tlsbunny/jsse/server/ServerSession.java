@@ -27,7 +27,7 @@ public class ServerSession implements Runnable {
             } else {
                 String message = messageOptional.get();
                 writeMessage(message);
-                System.out.printf("SERVER-SESSION-> Ha recibido %d bytes: %s%n", message.length(), message);
+                System.out.printf("SERVER-SESSION: Ha recibido %d bytes: %s%n", message.length(), message);
             }
         } catch (Exception e) {
             System.out.printf("SERVER-SESSION: Se ha producido un error -> %s%n", e.getMessage());

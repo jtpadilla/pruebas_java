@@ -34,7 +34,7 @@ public class ClientSession implements AutoCloseable {
         if (len <= 0) {
             throw new IOException("no data received");
         }
-        System.out.printf("CLIENT-SESSION-> Ha recibido %d bytes: %s%n", len, new String(data, 0, len));
+        System.out.printf("CLIENT-SESSION: Ha recibido %d bytes: %s%n", len, new String(data, 0, len));
     }
 
     @Override
