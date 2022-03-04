@@ -4,7 +4,7 @@ import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
-import java.io.*;
+import java.io.IOException;
 
 public class ServerListener implements AutoCloseable, Runnable {
 

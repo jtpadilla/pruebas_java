@@ -4,7 +4,6 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 public class ClientSession implements AutoCloseable {
 
