@@ -19,9 +19,24 @@ public class ClientSession implements AutoCloseable {
     final private OutputStream os;
 
     public ClientSession(String host, int port) throws IOException {
+
         socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket(host, port);
+
         socket.setEnabledProtocols(ENABLED_PROTOCOLS);
         socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
+
+        System.out.println("WantClientAuth:" + socket.getWantClientAuth());
+        socket.setWantClientAuth(socket.getWantClientAuth());
+
+        System.out.println("NeedClientAuth:" + socket.getNeedClientAuth());
+        socket.setNeedClientAuth(socket.getNeedClientAuth());
+
+        System.out.println("UseClientMode:" + socket.getUseClientMode());
+        socket.setUseClientMode(socket.getUseClientMode());
+
+        System.out.println("EnableSessionCreation:" + socket.getEnableSessionCreation());
+        socket.setEnableSessionCreation(socket.getEnableSessionCreation());
+
         is = new BufferedInputStream(socket.getInputStream());
         os = new BufferedOutputStream(socket.getOutputStream());
     }

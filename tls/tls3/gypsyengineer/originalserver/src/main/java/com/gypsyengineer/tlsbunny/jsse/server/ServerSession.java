@@ -13,6 +13,21 @@ public class ServerSession implements Runnable {
 
     public ServerSession(SSLSocket socket) throws IOException {
         this.socket = socket;
+
+        System.out.println("WantClientAuth:" + socket.getWantClientAuth());
+        socket.setWantClientAuth(socket.getWantClientAuth());
+
+        System.out.println("NeedClientAuth:" + socket.getNeedClientAuth());
+        socket.setNeedClientAuth(socket.getNeedClientAuth());
+
+        System.out.println("UseClientMode:" + socket.getUseClientMode());
+        socket.setUseClientMode(socket.getUseClientMode());
+
+        System.out.println("EnableSessionCreation:" + socket.getEnableSessionCreation());
+        socket.setEnableSessionCreation(socket.getEnableSessionCreation());
+
+
+
         is = new BufferedInputStream(socket.getInputStream());
         os = new BufferedOutputStream(socket.getOutputStream());
     }
