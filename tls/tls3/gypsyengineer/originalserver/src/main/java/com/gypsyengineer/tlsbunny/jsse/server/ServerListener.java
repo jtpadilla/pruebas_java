@@ -5,6 +5,7 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class ServerListener implements AutoCloseable, Runnable {
 
@@ -42,9 +43,19 @@ public class ServerListener implements AutoCloseable, Runnable {
 
     public void nextAccept() {
         try (SSLSocket socket = (SSLSocket) sslServerSocket.accept()) {
-            ServerSession serverSession = new ServerSession(socket);
-            serverSession.run();
-            //new Thread(new Session(socket)).start();
+
+//            socket.setEnabledProtocols(ENABLED_PROTOCOLS);
+//            socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
+//            socket.setEnableSessionCreation(false);
+//            socket.setUseClientMode(false);
+//            socket.setNeedClientAuth(false);
+//            socket.setWantClientAuth(false);
+
+            //new ServerSession(socket).run();
+            new Thread(new ServerSession(socket)).start();
+
+            TimeUnit.SECONDS.sleep(30);
+
         } catch (Exception e) {
             System.out.printf("SERVER-LISTENER: Exception=%s%n", e.getMessage());
         }
