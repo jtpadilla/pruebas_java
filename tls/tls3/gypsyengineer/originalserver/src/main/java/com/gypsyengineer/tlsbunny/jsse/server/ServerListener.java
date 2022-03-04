@@ -38,28 +38,20 @@ public class ServerListener implements AutoCloseable, Runnable {
 
     @Override
     public void run() {
-        nextAccept();
+        while(true) {
+            nextAccept();
+        }
     }
 
     public void nextAccept() {
-        try (SSLSocket socket = (SSLSocket) sslServerSocket.accept()) {
-
-//            socket.setEnabledProtocols(ENABLED_PROTOCOLS);
-//            socket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
-//            socket.setEnableSessionCreation(false);
-//            socket.setUseClientMode(false);
-//            socket.setNeedClientAuth(false);
-//            socket.setWantClientAuth(false);
-
-            //new ServerSession(socket).run();
+        try {
+            SSLSocket socket = (SSLSocket) sslServerSocket.accept();
             new Thread(new ServerSession(socket)).start();
-
-            TimeUnit.SECONDS.sleep(30);
-
         } catch (Exception e) {
             System.out.printf("SERVER-LISTENER: Exception=%s%n", e.getMessage());
         }
         System.out.println("SERVER-LISTENER: Se detiene el servidor.");
     }
+
 
 }
