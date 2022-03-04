@@ -48,7 +48,6 @@ public class ServerListener implements AutoCloseable, Runnable {
         } catch (Exception e) {
             System.out.printf("SERVER-LISTENER: Exception=%s%n", e.getMessage());
         }
-        System.out.println("SERVER-LISTENER: Se detiene el servidor.");
     }
 
 }
