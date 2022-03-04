@@ -14,7 +14,7 @@ public class ClientLauncher {
             clientSession.writeLine(message);
             Optional<String> responde = clientSession.readLine();
             boolean ok = responde.isPresent() && responde.get().equals(message);
-            System.out.println("=======================> " + (ok  ? "OK" : "Error"));
+            System.out.println((ok  ? "OK" : "Error"));
         }
     }
 

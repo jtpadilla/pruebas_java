@@ -5,20 +5,16 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ServerSession implements Runnable {
 
     static private AtomicInteger sessionCounter = new AtomicInteger(0);
 
     final private SSLSocket socket;
-    final private Logger logger;
     final private InputStream is;
     final private OutputStream os;
 
     public ServerSession(SSLSocket socket) throws IOException {
-        logger = Logger.getLogger(String.format("server.%d", sessionCounter.getAndIncrement()));
         this.socket = socket;
         this.is = new BufferedInputStream(socket.getInputStream());
         this.os = new BufferedOutputStream(socket.getOutputStream());
@@ -43,7 +39,6 @@ public class ServerSession implements Runnable {
     private void echo() throws IOException {
         Optional<String> line = readLine();
         if (line.isPresent()) {
-            logger.info(String.format("Rx: %s%n", line.get()));
             writeLine(line.get());
         } else {
             throw new IOException("No se han recibido datos!");
@@ -53,20 +48,16 @@ public class ServerSession implements Runnable {
     @Override
     public void run() {
 
-        logger.info("accepted");
-
         try {
             echo();
-            //while(true) echo();
 
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error durante el procesado de la conexion", e);
+            e.printStackTrace();
 
         } finally {
             try {
                 socket.close();
             } catch (IOException e) {
-                logger.log(Level.SEVERE, "Error durante el cierre de la conexion", e);
                 e.printStackTrace();
             }
 

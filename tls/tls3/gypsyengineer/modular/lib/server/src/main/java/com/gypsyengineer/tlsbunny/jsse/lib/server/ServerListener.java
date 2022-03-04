@@ -5,11 +5,10 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
-import java.util.logging.Logger;
 
-public class ServerListener {
+public class ServerListener implements AutoCloseable, Runnable {
 
-    static final private Logger LOGGER = Logger.getLogger("server.listener");
+    private static final int PORT = 4443;
 
     static final private String[] ENABLED_PROTOCOLS = new String[] {
             "TLSv1.3"
@@ -19,34 +18,37 @@ public class ServerListener {
             "TLS_AES_128_GCM_SHA256"
     };
 
-    private static final int PORT = 4443;
+    final private SSLServerSocket sslServerSocket;
 
-    static private SSLServerSocket buildServerSocket() throws IOException {
+    public ServerListener() throws IOException {
         ServerSocketFactory serverSocketFactory = SSLServerSocketFactory.getDefault();
-        SSLServerSocket sslServerSocket = (SSLServerSocket) serverSocketFactory.createServerSocket(PORT);
+        sslServerSocket = (SSLServerSocket) serverSocketFactory.createServerSocket(PORT);
         sslServerSocket.setEnabledProtocols(ENABLED_PROTOCOLS);
         sslServerSocket.setEnabledCipherSuites(ENABLED_CLIPHER_SUITS);
-        return sslServerSocket;
     }
 
-    static public void runListenerForever()  {
-
-        try {
-            LOGGER.info(String.format("Se inicia el servidor en el puerto %d%n", PORT));
-            SSLServerSocket sslServerSocket = buildServerSocket();
-
-            while (true) {
-                try (SSLSocket socket = (SSLSocket) sslServerSocket.accept()) {
-                    new Thread(new ServerSession(socket)).start();
-                } catch (Exception e) {
-                    System.out.printf("exception: %s%n", e.getMessage());
-                }
-            }
-
-        } catch (IOException ioEx) {
-            throw new IllegalStateException(ioEx);
+    @Override
+    public void close() throws Exception {
+        if (sslServerSocket != null && !sslServerSocket.isClosed()) {
+            sslServerSocket.close();
         }
+    }
 
+    @Override
+    public void run() {
+        while(true) {
+            nextAccept();
+        }
+    }
+
+    public void nextAccept() {
+        try {
+            SSLSocket socket = (SSLSocket) sslServerSocket.accept();
+            new Thread(new ServerSession(socket)).start();
+        } catch (Exception e) {
+            System.out.printf("SERVER-LISTENER: Exception=%s%n", e.getMessage());
+        }
+        System.out.println("SERVER-LISTENER: Se detiene el servidor.");
     }
 
 }

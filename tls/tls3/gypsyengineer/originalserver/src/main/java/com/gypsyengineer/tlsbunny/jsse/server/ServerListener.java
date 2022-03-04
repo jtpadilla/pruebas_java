@@ -5,7 +5,6 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class ServerListener implements AutoCloseable, Runnable {
 
@@ -19,7 +18,7 @@ public class ServerListener implements AutoCloseable, Runnable {
             "TLS_AES_128_GCM_SHA256"
     };
 
-    private final SSLServerSocket sslServerSocket;
+    final private SSLServerSocket sslServerSocket;
 
     public ServerListener() throws IOException {
         ServerSocketFactory serverSocketFactory = SSLServerSocketFactory.getDefault();

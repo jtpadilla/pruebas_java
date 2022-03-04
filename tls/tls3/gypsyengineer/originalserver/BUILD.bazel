@@ -5,8 +5,8 @@ java_binary(
         #        "'-Djavax.net.debug=ssl'",
         "'-Djavax.net.ssl.keyStore=/opt/gypsyengineer.ks/keystore'",
         "'-Djavax.net.ssl.keyStorePassword=passphrase'",
-        "'-Djavax.net.ssl.trustStore=/opt/gypsyengineer.ks/truststore'",
-        "'-Djavax.net.ssl.trustStorePassword=passphrase'",
+        #        "'-Djavax.net.ssl.trustStore=/opt/gypsyengineer.ks/truststore'",
+        #        "'-Djavax.net.ssl.trustStorePassword=passphrase'",
     ],
     main_class = "com.gypsyengineer.tlsbunny.jsse.server.TLSv13TestServer",
 )
