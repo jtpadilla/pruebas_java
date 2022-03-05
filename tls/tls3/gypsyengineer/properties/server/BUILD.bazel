@@ -3,10 +3,12 @@ java_binary(
     srcs = glob(["src/main/java/**/*.java"]),
     jvm_flags = [
         #        "'-Djavax.net.debug=ssl'",
-        "'-Djavax.net.ssl.keyStore=/opt/gypsyengineer.ks/samples/keystore'",
-        "'-Djavax.net.ssl.keyStorePassword=passphrase'",
+        #        "'-Djavax.net.ssl.keyStore=/opt/gypsyengineer.ks/samples/keystore'",
+        #        "'-Djavax.net.ssl.keyStorePassword=passphrase'",
         #        "'-Djavax.net.ssl.trustStore=/opt/gypsyengineer.ks/samples/truststore'",
         #        "'-Djavax.net.ssl.trustStorePassword=passphrase'",
+        "'-Djavax.net.ssl.keyStore=/opt/gypsyengineer.ks/custom/keystore'",
+        "'-Djavax.net.ssl.keyStorePassword=passphrase'",
     ],
     main_class = "com.gypsyengineer.tlsbunny.jsse.server.TLSv13TestServer",
 )

@@ -1,0 +1,11 @@
+keytool -genkeypair -alias dummy -keyalg RSA -keysize 2048 \
+  -sigalg SHA256withRSA   -dname "CN=dummy.example.com, OU=Dummy, O=Dummy, L=Cupertino, ST=CA, C=US" \
+  -validity 3652 -keypass passphrase -keystore keystore -storepass passphrase
+
+keytool -importcert -file server.cer -alias server -keystore truststore -storepass passphrase
+
+keytool -exportcert -file server.cer -alias dummy -keystore keystore -storepass passphrase
+
+keytool -importcert -file server.cer -alias server -keystore truststore -storepass passphrase
+
+keytool -list -keystore truststore -storepass passphrase
