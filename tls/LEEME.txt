@@ -8,3 +8,5 @@ https://crunchify.com/java-sslsocket-with-tls1-3-and-tls_aes_128_gcm_sha256-ciph
 https://gist.github.com/artem-smotrakov/bd14e4bde4d7238f7e5ab12c697a86a3
 
 https://stackoverflow.com/questions/6353849/received-fatal-alert-handshake-failure-through-sslhandshakeexception
+
+https://www.baeldung.com/java-keystore
