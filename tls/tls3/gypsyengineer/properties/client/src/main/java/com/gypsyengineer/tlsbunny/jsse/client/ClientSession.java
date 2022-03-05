@@ -42,7 +42,7 @@ public class ClientSession implements AutoCloseable {
 
         // Verificacion
         if (received.isPresent()) {
-            System.out.println(received.get().equals(message) ? "OK" : "ERROR");
+            System.out.println("El eco del emnsaje es: " + (received.get().equals(message) ? "OK" : "ERROR"));
         } else {
             throw new IOException("No se han ecibido datos");
         }
