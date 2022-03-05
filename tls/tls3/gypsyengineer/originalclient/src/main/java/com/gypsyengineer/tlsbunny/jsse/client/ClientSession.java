@@ -65,8 +65,6 @@ public class ClientSession implements AutoCloseable {
         os.flush();
     }
 
-
-
     @Override
     public void close() throws Exception {
         socket.close();
