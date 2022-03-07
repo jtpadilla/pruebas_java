@@ -8,8 +8,8 @@ java_binary(
         #        "'-Djavax.net.ssl.trustStore=/opt/gypsyengineer.ks/samples/truststore'",
         #        "'-Djavax.net.ssl.trustStorePassword=passphrase'",
         #        "'-Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts'",
-        "'-Djavax.net.ssl.trustStore=/opt/gypsyengineer.ks/custom/truststore'",
-        "'-Djavax.net.ssl.trustStorePassword=passphrase'",
+        #        "'-Djavax.net.ssl.trustStore=/opt/gypsyengineer.ks/custom/truststore'",
+        #        "'-Djavax.net.ssl.trustStorePassword=passphrase'",
     ],
     main_class = "com.gypsyengineer.tlsbunny.jsse.client.TLSv13TestClient",
 )

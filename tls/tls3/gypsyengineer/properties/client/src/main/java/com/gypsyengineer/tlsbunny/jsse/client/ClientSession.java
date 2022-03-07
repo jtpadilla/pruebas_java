@@ -1,5 +1,6 @@
 package com.gypsyengineer.tlsbunny.jsse.client;
 
+import javax.net.SocketFactory;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
@@ -20,8 +21,12 @@ public class ClientSession implements AutoCloseable {
     final private InputStream is;
     final private OutputStream os;
 
-    public ClientSession(String host, int port) throws IOException {
-        socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket(host, port);
+    public ClientSession(String host, int port) throws Exception {
+
+        //SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+        SSLSocketFactory sslSocketFactory = SSLUtil.getSocketFactory();
+
+        socket = (SSLSocket) sslSocketFactory.createSocket(host, port);
         System.out.println("WantClientAuth:" + socket.getWantClientAuth());
         System.out.println("NeedClientAuth:" + socket.getNeedClientAuth());
         System.out.println("UseClientMode:" + socket.getUseClientMode());
