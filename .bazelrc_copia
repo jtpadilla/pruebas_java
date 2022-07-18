@@ -1,8 +1,0 @@
-
-build --java_language_version=16
-
-build --java_toolchain=@remote_java_tools_linux//:toolchain_jdk_16
-build --host_java_toolchain=@remote_java_tools_linux//:toolchain_jdk_16
-
-build --javabase=@openjdk16_linux_archive//:runtime
-build --host_javabase=@openjdk16_linux_archive//:runtime
