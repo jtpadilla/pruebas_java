@@ -1,5 +1,4 @@
 load("@rules_jvm_external//:defs.bzl", "maven_install")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 JUNIT_VERSION = "4.12"
 

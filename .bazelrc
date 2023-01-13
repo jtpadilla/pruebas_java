@@ -1,9 +1,65 @@
 
-build --java_runtime_version=remotejdk_17
-build --java_language_version=17
+########################################################################
+########################################################################
+# Compilacion/Runtime
+########################################################################
+########################################################################
 
-build --tool_java_runtime_version=17
-build --tool_java_language_version=17
+########################################################################
+# Indica la version que se utilizara en el codigo java del proyecto
+#
+# El valor predeterminado es 11
+########################################################################
+build --java_language_version=18
 
-build --incompatible_java_common_parameters=false
+########################################################################
+# Esta opción especifica la versión de JVM que se usa para ejecutar el
+# código y ejecutar las pruebas.
+#
+# El valor predeterminado es localjdk
+########################################################################
+build --java_runtime_version=remotejdk_18
+
+########################################################################
+# Esta opción permite que se pasen argumentos de opciones a javac.
+# Se puede usar con un argumento grande o varias veces con argumentos
+# individuales.
+########################################################################
+build --javacopt=--enable-preview
+
+########################################################################
+# Esta opcion le indica a la maquina viirtuial que active las
+# preview en el momento de ejecutar las aplicaciones
+########################################################################
+build --jvmopt --enable-preview
+
+########################################################################
+########################################################################
+# Tools
+########################################################################
+########################################################################
+
+########################################################################
+# Es la versión del lenguaje Java que se usa para compilar herramientas
+# que se ejecutan durante una compilación.
+#
+# El valor predeterminado es 11.
+########################################################################
+build --tool_java_language_version=18
+
+########################################################################
+# La versión de JVM que se usa para ejecutar las herramientas necesarias
+# durante una compilación.
+#
+# El valor predeterminado es remotejdk_11.
+########################################################################
+build --tool_java_runtime_version=18
+
+########################################################################
+########################################################################
+# Otros....
+########################################################################
+########################################################################
+#build --incompatible_java_common_parameters=false
+
 

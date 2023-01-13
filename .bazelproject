@@ -15,7 +15,7 @@ additional_languages:
   # kotlin
   # scala
 
-java_language_level: 17
+java_language_level: jdk_18_preview
 
 workspace_type: java
 

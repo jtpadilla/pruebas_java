@@ -1,0 +1,7 @@
+java_binary(
+    name = "preview",
+    srcs = glob(["src/main/java/jtpadilla/jdk/java18/preview/Example.java"]),
+    main_class = "jtpadilla.jdk.java18.preview.Example",
+    deps = [
+    ],
+)
