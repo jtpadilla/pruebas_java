@@ -1,4 +1,4 @@
-workspace(name = "com_speedycontrol_speedycontrol_common")
+workspace(name = "pruebas_java")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
