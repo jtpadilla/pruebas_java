@@ -1,11 +1,8 @@
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
-JUNIT_VERSION = "4.12"
-
 def pruebas_java_deps():
     maven_install(
         artifacts = [
-            "junit:junit:%s" % JUNIT_VERSION,
             "org.json:json:20210307",
             "org.assertj:assertj-core:3.4.1",
             "org.hamcrest:hamcrest:2.2",
