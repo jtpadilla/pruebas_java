@@ -11,6 +11,5 @@ java_test(
     test_class = "com.baeldung.sasl.test.SaslUnitTest",
     deps = [
         ":sasl",
-        "@maven//:junit_junit",
     ],
 )

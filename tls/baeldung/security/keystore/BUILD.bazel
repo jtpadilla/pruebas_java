@@ -11,6 +11,5 @@ java_library(
 #    test_class = "com.baeldung.keystore.test.JavaKeyStoreUnitTest",
 #    deps = [
 #        ":keystore",
-#        "@maven//:junit_junit",
 #    ],
 #)
