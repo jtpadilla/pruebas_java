@@ -1,5 +1,3 @@
-workspace(name = "pruebas_java")
-
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 RULES_JVM_EXTERNAL_TAG = "4.5"
